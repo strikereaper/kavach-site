@@ -1,0 +1,62 @@
+/*
+ * Kavach design tokens. Change a colour here and it changes across the site.
+ *
+ * Colour meaning (keep to this when adding anything):
+ *   indigo (neel)      = protected: redaction bars, tokens, primary buttons, dark bands
+ *   vermilion (sindoor) = detected / needs attention: raw PII, the seal, focus rings
+ *   khadi               = the neutral ground
+ */
+:root {
+  --kv-khadi: #F4F1E8;
+  --kv-khadi-deep: #EFEBE0;
+  --kv-paper: #FBFAF5;
+  --kv-line: #D9D3C3;
+  --kv-line-soft: #E5E0D3;
+  --kv-track: #E0DACB;
+  --kv-stone-light: #C9C3B3;
+  --kv-stone: #B9B3A3;
+  --kv-stone-dark: #A9A291;
+
+  --kv-ink: #161A2E;
+  --kv-ink-2: #454A60;
+  --kv-muted: #5C6075;
+
+  --kv-indigo: #1E2C6B;
+  --kv-indigo-deep: #141C45;
+  --kv-indigo-ink: #0E1433;
+  --kv-indigo-line: #3A4A94;
+  --kv-indigo-soft: #5868B0;
+  --kv-on-dark: #ECE8DC;
+  --kv-on-dark-2: #C9CDE0;
+  --kv-on-dark-muted: #A9B0D0;
+
+  --kv-vermilion: #C2410C;
+  --kv-vermilion-deep: #9A3412;
+  --kv-vermilion-bright: #E2672F;
+  --kv-vermilion-light: #F08A5D;
+}
+
+.kv-root {
+  font-family: 'Mukta', 'Anek Devanagari Variable', 'Anek Kannada Variable', 'Anek Tamil Variable', 'Anek Telugu Variable',
+    'Anek Malayalam Variable', 'Anek Bangla Variable', 'Anek Gujarati Variable', 'Anek Gurmukhi Variable', 'Noto Nastaliq Urdu',
+    system-ui, sans-serif;
+  color: var(--kv-ink);
+  background: var(--kv-khadi);
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+  overflow-x: clip;
+}
+
+/* Pilot form */
+.kv-field { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600; }
+.kv-field input {
+  font: inherit; font-weight: 400; font-size: 17px; padding: 12px 14px;
+  border: 1px solid var(--kv-stone-dark); border-radius: 6px; background: #fff; color: var(--kv-ink);
+}
+.kv-choice {
+  font: inherit; font-size: 15px; font-weight: 500; padding: 10px 14px; min-height: 44px; border-radius: 6px; cursor: pointer;
+  background: #fff; color: var(--kv-ink); border: 1px solid var(--kv-stone-dark);
+  transition: background-color .2s ease-out, color .2s ease-out, border-color .2s ease-out;
+}
+.kv-choice[aria-pressed='true'] { font-weight: 600; background: var(--kv-indigo); color: var(--kv-paper); border-color: var(--kv-indigo); }

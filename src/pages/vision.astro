@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import { u } from '../lib/url';
+import { renderAll } from '../lib/dc';
+import { Component } from '../logic/vision.js';
+const tpl = import.meta.glob('../templates/vision/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const html = renderAll(new Component({}), tpl);
+---
+<Base title="Kavach Vision \u00b7 Redact scans, photos and PDFs" description="Scans, phone photos and PDFs come back with the layout intact and personal details covered, including faces, signatures and Aadhaar QR codes." current="vision/" height={5000}>
+<!-- HERO + DEMO -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 112px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-ink-2)">Kavach Vision · image in, image out</p>
+<h1 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(42px, 5.4vw, 72px); line-height: 0.98; letter-spacing: -0.02em; text-wrap: balance">Redact scans, photos and PDFs with the layout intact.</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.55; color: var(--kv-ink-2); text-wrap: pretty">Send a scan, phone photo, PDF or screenshot and get the same file back with personal details covered. Vision reads printed text and handwriting in English and Indian scripts, covers faces, signatures and QR codes, and logs every box it draws.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="kv-btn" href={u('pilot/')} style="background: var(--kv-indigo); color: var(--kv-paper); text-decoration: none; padding: 15px 24px; border-radius: 6px; font-weight: 600; font-size: 17px">Book a pilot for Vision</a>
+<a class="kv-btn2" href="#pipeline" style="color: var(--kv-ink); text-decoration: none; padding: 14px 24px; border-radius: 6px; font-weight: 600; font-size: 17px; border: 1px solid var(--kv-ink)">How it works</a>
+</div>
+</div>
+
+<div style="flex: 1 1 520px; min-width: 0; background: var(--kv-paper); border: 1px solid var(--kv-line); border-radius: 10px; box-shadow: 0 30px 60px -36px rgba(22, 26, 46, 0.35); overflow: hidden" data-island="demo" set:html={html.demo}></div>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline" style="background: rgba(239, 235, 224, 0.72); border-top: 1px solid var(--kv-line); border-bottom: 1px solid var(--kv-line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 40px">
+<h2 class="rv" style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(32px, 4vw, 48px); line-height: 1.04; max-width: 760px">Pixels in, pixels out. Every box accounted for.</h2>
+<div>
+<div aria-hidden="true" style="height: 2px; background: var(--kv-line); margin: 0 0 28px"><div class="kv-bar" style="height: 2px; background: var(--kv-indigo); transform-origin: 0 50%"></div></div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 28px">
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०१</span> · 01</span><strong style="font-size: 19px">Any image or PDF</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">JPEG, PNG, TIFF, HEIC, scanned and digital PDFs, multi-page bundles.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०२</span> · 02</span><strong style="font-size: 19px">Read the layout</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">Indic scripts, tables, forms, stamps and handwriting, with every word mapped to its box.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०३</span> · 03</span><strong style="font-size: 19px">Detect</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">PII in the words, plus faces, photographs, signatures, QR and barcodes, MICR lines.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०४</span> · 04</span><strong style="font-size: 19px">Burn in</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">Covered pixels and a rewritten text layer, so nothing can be copied or un-redacted.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०५</span> · 05</span><strong style="font-size: 19px">Record</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">JSON with page, coordinates, entity type and confidence for every redaction.</span></li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- STYLES + DOCS -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 48px">
+<article class="rv" style="display: flex; flex-direction: column; gap: 14px; border-top: 2px solid var(--kv-ink); padding-top: 24px">
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: var(--kv-indigo)">Redaction styles</p>
+<h3 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: 32px; line-height: 1.08">Match what the reader needs</h3>
+<ul style="margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.9; color: var(--kv-ink-2)">
+<li>Solid boxes for legal and regulatory sharing</li>
+<li>Labelled boxes (NAME, AADHAAR) so reviewers keep context</li>
+<li>Keep the last four digits, the way masked Aadhaar works</li>
+<li>Blur or pixelate faces and photographs</li>
+<li>Consistent tokens across a bundle for analytics</li>
+</ul>
+</article>
+<article class="rv" style="display: flex; flex-direction: column; gap: 14px; border-top: 2px solid var(--kv-ink); padding-top: 24px">
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: var(--kv-indigo)">Documents it knows</p>
+<h3 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: 32px; line-height: 1.08">Built on Indian paperwork</h3>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; font-size: 15px">
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Aadhaar and PAN cards</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Passports and voter IDs</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Driving licences</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Cheques</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Bank statements</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Claim forms</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Discharge summaries</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Prescriptions and lab reports</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Salary slips and Form 16</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">Property papers</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 7px 12px">App screenshots</li>
+</ul>
+</article>
+</section>
+
+<!-- USE CASES -->
+<section style="border-top: 1px solid var(--kv-line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 32px">
+<h2 class="rv" style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(32px, 4vw, 48px); line-height: 1.04">Where teams use Vision</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 0 40px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Co-lending and partner KYC</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Partners get Aadhaar, PAN and passport scans with only what the agreement allows them to see.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Claims to TPAs and reinsurers</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Identity removed, medical and billing detail intact.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Bank statements for underwriting</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Statement analysers read the transactions without seeing who the customer is.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Clinical research datasets</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">De-identify prescriptions, reports and scans before they leave the hospital network.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">RTI replies and public records</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Publish documents with citizen details removed and the page layout unchanged.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Screenshots in support tickets</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Customer screenshots are cleaned as tickets are created, before engineering or a vendor sees them.</span></div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section style="position: relative; overflow: hidden; background: var(--kv-indigo-deep); color: var(--kv-on-dark)">
+<div class="kv-scales" aria-hidden="true"></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 700px">
+<h2 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.04">Point Vision at a folder of your hardest scans.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--kv-on-dark-2)">Free 90-day pilot inside your environment. Documents never leave it.</p>
+</div>
+<a class="kv-btn2" href={u('pilot/')} style="background: var(--kv-khadi); color: var(--kv-indigo-deep); text-decoration: none; padding: 16px 26px; border-radius: 6px; font-weight: 600; font-size: 17px; border: 1px solid var(--kv-khadi)">Book a pilot</a>
+</div>
+</section>
+</Base>
+
+<script>
+import { mount } from '../lib/dc';
+import { Component } from '../logic/vision.js';
+const tpl = import.meta.glob('../templates/vision/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+mount(new Component({}), tpl);
+</script>

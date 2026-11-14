@@ -1,0 +1,112 @@
+---
+/**
+ * Shared page shell: <head>, header, background grid, alphabet ribbon and footer.
+ * Every page in src/pages wraps its sections in <Base>.
+ */
+import '@fontsource-variable/anek-latin/wdth.css';
+import '@fontsource-variable/anek-devanagari';
+import '@fontsource-variable/anek-kannada';
+import '@fontsource-variable/anek-tamil';
+import '@fontsource-variable/anek-telugu';
+import '@fontsource-variable/anek-malayalam';
+import '@fontsource-variable/anek-bangla';
+import '@fontsource-variable/anek-gujarati';
+import '@fontsource-variable/anek-gurmukhi';
+import '@fontsource/mukta/400.css';
+import '@fontsource/mukta/500.css';
+import '@fontsource/mukta/600.css';
+import '@fontsource/mukta/700.css';
+import '@fontsource-variable/jetbrains-mono';
+import '@fontsource/noto-nastaliq-urdu/400.css';
+import '../styles/tokens.css';
+import '../styles/motion.css';
+import { u } from '../lib/url';
+import { nav, footerNav, site } from '../data/site';
+import { varnamala } from '../data/varnamala';
+
+interface Props {
+  title: string;
+  description: string;
+  /** The nav path of this page, e.g. 'relay/'. Empty for the home page. */
+  current?: string;
+  /** Rough page height in px, used to scatter the redaction sparks in the background grid. */
+  height?: number;
+}
+const { title, description, current = '', height = 5000 } = Astro.props;
+const canonical = Astro.site ? new URL(u(current), Astro.site).toString() : undefined;
+
+// Deterministic "random" so every build produces the same background.
+let seed = [...(current || 'home')].reduce((a, c) => a + c.charCodeAt(0), 7);
+const rnd = () => ((seed = (seed * 9301 + 49297) % 233280), seed / 233280);
+const sparks = Array.from({ length: Math.max(24, Math.floor(height / 110)) }, () => ({
+  left: (2 + Math.floor(rnd() * 58)) * 24 + 1,
+  top: (2 + Math.floor(rnd() * Math.max(4, Math.floor((height - 300) / 24)))) * 24 + 1,
+  delay: (rnd() * 8).toFixed(2),
+  dur: (7 + rnd() * 4).toFixed(1),
+}));
+const ribbon = varnamala.map((c, i) => ({ c, redact: i % 4 === 1, d: (rnd() * 7).toFixed(1) }));
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+{canonical && <link rel="canonical" href={canonical}>}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={site.name}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+{canonical && <meta property="og:url" content={canonical}>}
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F4F1E8">
+<link rel="icon" type="image/svg+xml" href={u('favicon.svg')}>
+</head>
+<body>
+<div class="kv-root">
+<div class="kv-prog" aria-hidden="true"></div>
+<div class="kv-gridbg" aria-hidden="true">
+{sparks.map((s) => <span class="kv-sig" style={`left: ${s.left}px; top: ${s.top}px; animation-delay: -${s.delay}s; animation-duration: ${s.dur}s`}></span>)}
+</div>
+
+<header class="kv-head" style="position: sticky; top: 0; z-index: 40; background: rgba(244, 241, 232, 0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid transparent">
+<div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<a href={u('')} aria-label="Kavach home" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--kv-ink)">
+<svg aria-hidden="true" width="26" height="28" viewBox="0 0 26 28" fill="none"><path d="M13 1.5l11 4v8c0 6.2-4.6 11.2-11 13-6.4-1.8-11-6.8-11-13v-8z" stroke="#1E2C6B" stroke-width="2" stroke-linejoin="round"></path><path d="M13 8l1.8 3.7 3.7 1.8-3.7 1.8L13 19l-1.8-3.7-3.7-1.8 3.7-1.8z" fill="#1E2C6B"></path></svg>
+<span style="font-family: 'Anek Latin Variable', sans-serif; font-weight: 700; font-size: 25px; font-stretch: 90%; letter-spacing: -0.01em">Kavach</span>
+<span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px; color: var(--kv-muted)">कवच</span>
+</a>
+<nav class="kv-nav" aria-label="Primary" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 16px; font-weight: 500">
+{nav.map((item) =>
+  item.path === current
+    ? <a href={u(item.path)} aria-current="page" style="color: var(--kv-indigo); text-decoration: underline; text-decoration-thickness: 2px; font-weight: 600">{item.label}</a>
+    : <a href={u(item.path)} style="color: var(--kv-ink-2); text-decoration: none">{item.label}</a>
+)}
+<a class="kv-btn" href={u('pilot/')} style="background: var(--kv-indigo); color: var(--kv-paper); text-decoration: none; padding: 11px 18px; border-radius: 6px; font-weight: 600">Book a pilot</a>
+</nav>
+</div>
+</header>
+
+<main>
+<slot />
+</main>
+
+<div class="kv-akshara" aria-hidden="true" style="overflow: hidden; border-top: 1px solid var(--kv-line); background: var(--kv-paper)">
+<div class="kv-ak-track" style="display: flex; width: max-content">
+{[0, 1].map(() => ribbon.map((r) => r.redact ? <span class="kv-ak kv-ak-r" style={`--d: -${r.d}s`}>{r.c}</span> : <span class="kv-ak">{r.c}</span>))}
+</div>
+</div>
+
+<footer style="border-top: 1px solid var(--kv-ink); background: var(--kv-khadi)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; font-size: 15px; color: var(--kv-muted)">
+<span>{site.tagline}</span>
+<nav class="kv-nav" aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 8px 22px">
+{footerNav.map((item) => <a href={u(item.path)} style="color: var(--kv-ink-2)">{item.label}</a>)}
+</nav>
+<span>All examples use synthetic data.</span>
+</div>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+// Use cases on the home page. Each entry: [product, title, description].
+// product is one of: relay, voice, vision, core.
+export const useCases = [
+  ['relay', 'Employee copilots on frontier LLMs', 'Staff use the best models without customer data going to the provider.'],
+  ['relay', 'Customer-service agents', 'Resolve tickets with frontier models while account details stay on-prem.'],
+  ['relay', 'MCP tool calls', 'Every tool call your agent makes is checked against policy before it leaves your network.'],
+  ['relay', 'Agent-to-agent with partners', 'When your agent works with an insurer’s or lender’s agent, it shares only the fields that are needed.'],
+  ['relay', 'Underwriting assistants', 'Let models reason over applications without seeing who applied.'],
+  ['relay', 'Coding agents on production data', 'Developer agents debug with real records, minus the customers.'],
+  ['relay', 'RAG without PII in the index', 'Documents are tokenised before they go into your vector store and restored when an answer is shown.'],
+  ['relay', 'WhatsApp and chat assistants', 'Customer chats in Hinglish reach the model masked, and replies come back with real names.'],
+  ['voice', 'QA on masked call recordings', 'QA teams and auditors review every call without hearing account numbers.'],
+  ['voice', 'Recordings for BPOs and vendors', 'Outsourced partners get audio they can work with, minus the customer details.'],
+  ['voice', 'Call summaries with any LLM', 'Summarise calls into your CRM with any model. The model only ever hears placeholders.'],
+  ['voice', 'Training data for voice bots', 'Your call archive becomes usable training data for your own ASR and voice bots.'],
+  ['voice', 'Video KYC and consent recordings', 'Keep the recordings regulators expect while limiting who can hear the details.'],
+  ['voice', 'Call-centre screens during live calls', 'Card and Aadhaar numbers are hidden on the call-centre agent’s screen while the customer reads them out.'],
+  ['vision', 'KYC files for co-lenders and partners', 'Partners get Aadhaar, PAN and passport scans with only the last four digits visible.'],
+  ['vision', 'Claim files for TPAs and reinsurers', 'Claim forms, bills and discharge summaries go out without patient identity. The medical detail stays.'],
+  ['vision', 'Bank statements for underwriting', 'Statement analysers read the transactions without seeing who the customer is.'],
+  ['vision', 'Clinical research datasets', 'De-identify prescriptions, lab reports and scans before they leave the hospital.'],
+  ['vision', 'RTI replies and public records', 'Publish documents with citizen details removed and the page layout unchanged.'],
+  ['vision', 'Legal discovery and e-filing', 'Redact scanned evidence bundles, with a record of every box drawn.'],
+  ['core', 'Logs and LLM traces', 'PII is stripped from application logs and LLM traces before they are stored.'],
+  ['core', 'Test data from production', 'Build test databases from production with consistent tokens, so joins still work.'],
+  ['core', 'Warehouse and data lake masking', 'Mask free-text columns like ticket notes and remarks across millions of rows.'],
+  ['core', 'Finding personal data for DPDP', 'Find which files, tables and archives contain personal data.'],
+  ['core', 'Access and erasure requests', 'Find everything you hold on one person when they ask to see it or delete it.'],
+  ['core', 'Email and ticket archives', 'Old support history becomes usable for analytics and AI.']
+];

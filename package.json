@@ -1,0 +1,29 @@
+{
+  "name": "kavach-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "check-links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.5",
+    "@fontsource-variable/anek-bangla": "^5.3.0",
+    "@fontsource-variable/anek-devanagari": "^5.3.0",
+    "@fontsource-variable/anek-gujarati": "^5.3.0",
+    "@fontsource-variable/anek-gurmukhi": "^5.3.0",
+    "@fontsource-variable/anek-kannada": "^5.3.0",
+    "@fontsource-variable/anek-latin": "^5.3.0",
+    "@fontsource-variable/anek-malayalam": "^5.3.0",
+    "@fontsource-variable/anek-tamil": "^5.3.0",
+    "@fontsource-variable/anek-telugu": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource/mukta": "^5.3.0",
+    "@fontsource/noto-nastaliq-urdu": "^5.3.0",
+    "astro": "^7.4.12"
+  }
+}

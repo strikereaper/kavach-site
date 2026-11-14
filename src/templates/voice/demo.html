@@ -1,0 +1,22 @@
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 22px; border-bottom: 1px solid var(--kv-line-soft)">
+<span style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--kv-ink-2)"><span class="kv-dot" aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: var(--kv-vermilion)"></span>call_0412.wav · Hindi and English</span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+<div role="group" aria-label="View" style="display: flex; gap: 3px; background: var(--kv-khadi); border: 1px solid var(--kv-line); border-radius: 7px; padding: 3px">
+<button type="button" aria-pressed="{{raw}}" onClick="{{showRaw}}" style="{{rawBtn}}">Original</button>
+<button type="button" aria-pressed="{{prot}}" onClick="{{showProt}}" style="{{protBtn}}">Protected</button>
+</div>
+<sc-if value="{{prot}}" hint-placeholder-val="{{ true }}">
+<div role="group" aria-label="How redacted speech sounds" style="display: flex; gap: 3px; background: var(--kv-khadi); border: 1px solid var(--kv-line); border-radius: 7px; padding: 3px">
+<sc-for list="{{sounds}}" as="o" hint-placeholder-count="3"><button type="button" aria-pressed="{{o.on}}" onClick="{{o.pick}}" style="{{o.style}}">{{o.label}}</button></sc-for>
+</div>
+</sc-if>
+</div>
+</div>
+<div aria-hidden="true" style="height: 120px; display: flex; align-items: center; gap: 3px; padding: 0 22px; background: var(--kv-khadi)">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="80"><div class="kv-wave" style="{{b.style}}"></div></sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px 48px; padding: 24px 22px 26px">
+<p style="margin: 0; flex: 1 1 520px; min-width: 0; font-size: 19px; line-height: 1.9">“…haan ji, mera account number <span style="{{spanStyle}}">{{spoken}}</span> hai, aur PAN <span style="{{spanStyle}}">{{spoken2}}</span>…”</p>
+<p style="margin: 0; flex: 1 1 300px; min-width: 0; font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">{{note}}</p>
+</div>

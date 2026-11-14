@@ -1,0 +1,9 @@
+
+<sc-for list="{{bench}}" as="r" hint-placeholder-count="6">
+<tr>
+<th scope="row" style="{{r.nameStyle}}">{{r.name}}</th>
+<td style="padding: 16px 12px; border-bottom: 1px solid var(--kv-line)"><div style="display: flex; align-items: center; gap: 14px"><div style="flex: 1; height: 10px; background: var(--kv-track); border-radius: 2px; overflow: hidden"><div class="kv-bar" style="{{r.barStyle}}"></div></div><span style="font-family: 'JetBrains Mono Variable', monospace; width: 52px; text-align: right">{{r.all}}</span></div></td>
+<td style="padding: 16px 12px; border-bottom: 1px solid var(--kv-line); font-family: 'JetBrains Mono Variable', monospace">{{r.indic}}</td>
+<td style="padding: 16px 0 16px 12px; border-bottom: 1px solid var(--kv-line); font-family: 'JetBrains Mono Variable', monospace">{{r.fa}}</td>
+</tr>
+</sc-for>

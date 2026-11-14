@@ -1,0 +1,10 @@
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<span style="font-size: 15px; font-weight: 600; color: var(--kv-ink-2)">{{langLabel}}</span>
+<div role="group" aria-label="View" style="display: flex; gap: 3px; background: var(--kv-khadi); border: 1px solid var(--kv-line); border-radius: 7px; padding: 3px">
+<button type="button" aria-pressed="{{langRaw}}" onClick="{{showLangRaw}}" style="{{langRawBtn}}">Original</button>
+<button type="button" aria-pressed="{{langProt}}" onClick="{{showLangProt}}" style="{{langProtBtn}}">Protected</button>
+</div>
+</div>
+<p dir="{{sampleDir}}" style="margin: 0; font-size: 26px; line-height: 1.9; min-height: 100px"><sc-for list="{{sample}}" as="g" hint-placeholder-count="5"><span style="{{g.style}}">{{g.text}}</span></sc-for></p>
+<p style="margin: 0; font-size: 14px; color: var(--kv-muted); border-top: 1px solid var(--kv-line-soft); padding-top: 14px">{{langNote}}</p>

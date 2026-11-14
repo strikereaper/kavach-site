@@ -1,0 +1,16 @@
+
+<div style="padding: 22px 24px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--kv-line-soft)">
+<span style="font-size: 14px; font-weight: 600; color: var(--kv-ink-2)">Original · your agent’s message</span>
+<p style="margin: 0; font-size: 18px; line-height: 1.8">Book a follow-up for <span style="background: rgba(194, 65, 12, 0.12); border-bottom: 2px solid var(--kv-vermilion); padding: 0 2px">Rohit Sharma</span> (PAN <span style="background: rgba(194, 65, 12, 0.12); border-bottom: 2px solid var(--kv-vermilion); padding: 0 2px">ABCPS1234K</span>, phone <span style="background: rgba(194, 65, 12, 0.12); border-bottom: 2px solid var(--kv-vermilion); padding: 0 2px">98860 22113</span>) at the Whitefield branch on Friday. His policy <span style="background: rgba(194, 65, 12, 0.12); border-bottom: 2px solid var(--kv-vermilion); padding: 0 2px">HX-55120-90011</span> renews next month.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 24px; background: var(--kv-khadi); border-bottom: 1px solid var(--kv-line-soft)">
+<strong style="font-size: 16px">Same message, different destination:</strong>
+<div role="group" aria-label="Destination" style="display: flex; flex-wrap: wrap; gap: 3px; background: var(--kv-paper); border: 1px solid var(--kv-line); border-radius: 7px; padding: 3px">
+<sc-for list="{{dests}}" as="d" hint-placeholder-count="4"><button type="button" aria-pressed="{{d.on}}" onClick="{{d.pick}}" style="{{d.style}}">{{d.label}}</button></sc-for>
+</div>
+</div>
+<div style="padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 600; color: var(--kv-indigo)">Protected · {{destTitle}}</span>
+<p style="margin: 0; font-size: 18px; line-height: 1.9"><sc-for list="{{segs}}" as="g" hint-placeholder-count="9"><span style="{{g.style}}">{{g.text}}</span></sc-for></p>
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">{{destNote}}</p>
+</div>

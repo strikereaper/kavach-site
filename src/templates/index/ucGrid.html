@@ -1,0 +1,8 @@
+
+<sc-for list="{{cases}}" as="c" hint-placeholder-count="12">
+<article style="display: flex; flex-direction: column; gap: 8px; padding: 22px 0; border-top: 1px solid var(--kv-stone-light)">
+<span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 12px; color: var(--kv-indigo)">{{c.tag}}</span>
+<h3 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.3">{{c.title}}</h3>
+<p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--kv-ink-2)">{{c.body}}</p>
+</article>
+</sc-for>

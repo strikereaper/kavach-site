@@ -1,0 +1,56 @@
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--kv-line-soft)">
+<div role="group" aria-label="Document" style="display: flex; gap: 3px; background: var(--kv-khadi); border: 1px solid var(--kv-line); border-radius: 7px; padding: 3px">
+<sc-for list="{{docs}}" as="d" hint-placeholder-count="3"><button type="button" aria-pressed="{{d.on}}" onClick="{{d.pick}}" style="{{d.style}}">{{d.label}}</button></sc-for>
+</div>
+<div role="group" aria-label="View" style="display: flex; gap: 3px; background: var(--kv-khadi); border: 1px solid var(--kv-line); border-radius: 7px; padding: 3px">
+<button type="button" aria-pressed="{{raw}}" onClick="{{showRaw}}" style="{{rawBtn}}">Original</button>
+<button type="button" aria-pressed="{{prot}}" onClick="{{showProt}}" style="{{protBtn}}">Protected</button>
+</div>
+</div>
+<div style="padding: 22px 18px; background: #E9E5DA">
+<div style="position: relative; overflow: hidden; border-radius: 4px; box-shadow: 0 2px 0 #D2CCBC">
+<sc-if value="{{raw}}" hint-placeholder-val="{{ false }}"><span class="kv-scan" aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 40%; height: 2px; background: var(--kv-vermilion); opacity: 0.6; z-index: 2"></span></sc-if>
+
+<!-- ID CARD -->
+<sc-if value="{{isId}}" hint-placeholder-val="{{ true }}">
+<div style="background: #FDFCF8; color: var(--kv-ink); padding: 22px; display: flex; gap: 18px; flex-wrap: wrap; min-height: 180px">
+<div style="{{photo}}" role="img" aria-label="Photograph"></div>
+<div style="flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px">
+<strong style="font-size: 13px; letter-spacing: 0.04em; color: var(--kv-muted)">IDENTITY DOCUMENT · SAMPLE</strong>
+<span>नाम / Name: <span style="{{f1}}">Arjun Venkatesh Rao</span></span>
+<span>जन्म तिथि / DOB: <span style="{{f2}}">14/08/1991</span></span>
+<span>पुरुष / Male</span>
+<span style="font-family: 'JetBrains Mono Variable', monospace; letter-spacing: 0.08em"><span style="{{f3}}">{{idNum}}</span></span>
+</div>
+<div style="{{qr}}" role="img" aria-label="QR code"></div>
+</div>
+</sc-if>
+
+<!-- CHEQUE -->
+<sc-if value="{{isCheque}}" hint-placeholder-val="{{ false }}">
+<div style="background: #EEF2EE; color: var(--kv-ink); padding: 22px; display: flex; flex-direction: column; gap: 12px; font-size: 15px; min-height: 180px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><strong>Sample Bank · Indiranagar branch</strong><span>Date 02/11/2026</span></div>
+<span>Pay <span style="{{f1}}">Meenakshi Sundaram</span> or bearer</span>
+<span>Rupees forty-two thousand only · ₹ 42,000/-</span>
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 12px">
+<span>A/c no. <span style="{{f2}}">50100231187764</span></span>
+<span style="{{sign}}">K. Iyer</span>
+</div>
+<span style="font-family: 'JetBrains Mono Variable', monospace"><span style="{{f3}}">⑈004211⑈ 560240012⑆ 187764⑈ 31</span></span>
+</div>
+</sc-if>
+
+<!-- PRESCRIPTION -->
+<sc-if value="{{isRx}}" hint-placeholder-val="{{ false }}">
+<div style="background: #FDFCF8; color: var(--kv-ink); padding: 22px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; min-height: 180px">
+<div style="display: flex; justify-content: space-between; gap: 12px"><strong>Sample Family Clinic, Chennai</strong><span>12 Nov 2026</span></div>
+<span>Patient: <span style="{{f1}}">Lakshmi Narayanan</span> · F · 34</span>
+<span>Mobile: <span style="{{f2}}">94440 55123</span> · ABHA: <span style="{{f3}}">91-4521-7788-3012</span></span>
+<div style="border-top: 1px dashed var(--kv-stone); padding-top: 10px; font-family: 'JetBrains Mono Variable', monospace; font-size: 13px; line-height: 1.8">Rx<br>Tab. Paracetamol 650 mg · 1-0-1 · 3 days<br>Syp. Cough linctus · 10 ml · night</div>
+<div style="display: flex; justify-content: flex-end"><span style="{{sign}}">Dr. P. Ramesh</span></div>
+</div>
+</sc-if>
+</div>
+</div>
+<p style="margin: 0; padding: 14px 18px 18px; font-size: 14px; line-height: 1.6; color: var(--kv-ink-2)">{{docNote}}</p>

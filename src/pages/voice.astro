@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import { u } from '../lib/url';
+import { renderAll } from '../lib/dc';
+import { Component } from '../logic/voice.js';
+const tpl = import.meta.glob('../templates/voice/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const html = renderAll(new Component({}), tpl);
+---
+<Base title="Kavach Voice \u00b7 Remove spoken PII from calls and recordings" description="Live calls and recordings in 10 Indian languages come back as the same audio, with spoken personal details beeped, silenced or voiced over." current="voice/" height={5000}>
+<!-- HERO -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 48px; display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-ink-2)">Kavach Voice · audio in, audio out</p>
+<h1 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(44px, 6vw, 80px); line-height: 0.98; letter-spacing: -0.02em; max-width: 980px; text-wrap: balance">Remove spoken PII from calls and recordings.</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.55; color: var(--kv-ink-2); max-width: 720px; text-wrap: pretty">Kavach Voice listens to live calls and recordings in 10 Indian languages, Hinglish and English, and finds the personal details people say out loud. You get the same audio back with those words removed. Length and format don’t change, so your QA tools, analytics and vendors work as before.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a class="kv-btn" href={u('pilot/')} style="background: var(--kv-indigo); color: var(--kv-paper); text-decoration: none; padding: 15px 24px; border-radius: 6px; font-weight: 600; font-size: 17px">Book a pilot for Voice</a>
+<a class="kv-btn2" href="#pipeline" style="color: var(--kv-ink); text-decoration: none; padding: 14px 24px; border-radius: 6px; font-weight: 600; font-size: 17px; border: 1px solid var(--kv-ink)">How it works</a>
+</div>
+</section>
+
+<!-- DEMO -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 112px">
+<div style="background: var(--kv-paper); border: 1px solid var(--kv-line); border-radius: 10px; box-shadow: 0 30px 60px -36px rgba(22, 26, 46, 0.35); overflow: hidden" data-island="demo" set:html={html.demo}></div>
+</section>
+
+<!-- WHAT IT HEARS -->
+<section style="border-top: 1px solid var(--kv-line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 40px 64px">
+<div class="rv" style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(32px, 4vw, 48px); line-height: 1.04">What it hears</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--kv-ink-2)">Trained on how people in India actually talk on calls: numbers read out as words, split across turns, spelled letter by letter, in more than one language.</p>
+</div>
+<ul class="rv" style="flex: 1 1 560px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; font-size: 16px; align-content: flex-start">
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">Names and nicknames</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">Phone numbers</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">Aadhaar and PAN</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">Account and card numbers</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">UPI IDs</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">Addresses and PIN codes</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">Dates of birth</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">Policy and claim numbers</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">OTPs and CVVs</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">Emails spelled aloud</li>
+<li style="border: 1px solid var(--kv-stone-dark); border-radius: 4px; padding: 9px 14px">ABHA IDs</li>
+<li style="border: 1px solid var(--kv-indigo); background: var(--kv-indigo); color: var(--kv-paper); border-radius: 4px; padding: 9px 14px; font-weight: 600">Your own formats</li>
+</ul>
+</div>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline" style="background: rgba(239, 235, 224, 0.72); border-top: 1px solid var(--kv-line); border-bottom: 1px solid var(--kv-line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 40px">
+<h2 class="rv" style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(32px, 4vw, 48px); line-height: 1.04; max-width: 760px">From waveform to waveform, inside your network.</h2>
+<div style="position: relative">
+<div aria-hidden="true" style="height: 2px; background: var(--kv-line); margin: 0 0 28px"><div class="kv-bar" style="height: 2px; background: var(--kv-indigo); transform-origin: 0 50%"></div></div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 28px">
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०१</span> · 01</span><strong style="font-size: 19px">Audio in</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">SIP/RTP and WebRTC streams, WAV, MP3, Opus, stereo or mono, any sample rate.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०२</span> · 02</span><strong style="font-size: 19px">Transcribe</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">On-prem Indic speech recognition with word timestamps and speaker separation, or your own ASR.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०३</span> · 03</span><strong style="font-size: 19px">Detect</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">Digits said as words, numbers split across turns, spelled-out names, code-mixed sentences.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०४</span> · 04</span><strong style="font-size: 19px">Rebuild</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">Matching words beeped, silenced or voiced over. Duration and timing stay the same.</span></li>
+<li class="rv" style="display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-indigo)"><span lang="hi" style="font-family: 'Anek Devanagari Variable', sans-serif; font-size: 17px">०५</span> · 05</span><strong style="font-size: 19px">Record</strong><span style="font-size: 15px; line-height: 1.6; color: var(--kv-ink-2)">Masked transcript, word-level JSON with entity types and timestamps, and a PII-free audit entry.</span></li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- MODES -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 48px">
+<article class="rv" style="display: flex; flex-direction: column; gap: 14px; border-top: 2px solid var(--kv-ink); padding-top: 24px">
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: var(--kv-indigo)">Live</p>
+<h3 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: 32px; line-height: 1.08">Redact while the customer is still talking</h3>
+<ul style="margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.9; color: var(--kv-ink-2)">
+<li>Streaming with a short lookahead, so split numbers are still caught</li>
+<li>Clean feed for call recording, analytics and voice bots</li>
+<li>Card and Aadhaar numbers hidden on the call-centre agent’s screen</li>
+<li>Taps the stream from your SBC or media server</li>
+</ul>
+</article>
+<article class="rv" style="display: flex; flex-direction: column; gap: 14px; border-top: 2px solid var(--kv-ink); padding-top: 24px">
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: var(--kv-indigo)">Batch</p>
+<h3 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: 32px; line-height: 1.08">Clean up years of archives</h3>
+<ul style="margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.9; color: var(--kv-ink-2)">
+<li>Watch folders and S3-compatible object storage</li>
+<li>Kafka and queue connectors for event pipelines</li>
+<li>Scales out across CPU and GPU nodes</li>
+<li>Resumable jobs with an audit record per file</li>
+</ul>
+</article>
+</section>
+
+<!-- USE CASES -->
+<section style="border-top: 1px solid var(--kv-line)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 32px">
+<h2 class="rv" style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(32px, 4vw, 48px); line-height: 1.04">Where teams use Voice</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 0 40px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Contact-centre QA</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Score every call, not a sample, without exposing customers to reviewers.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Voice AI training data</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Fine-tune ASR and voice bots on real Indian conversations, minus the customers.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Collections compliance</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Audit recovery-agent calls for conduct while borrower details stay hidden.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Teleconsult recordings</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Keep consult audio for quality review with patient names, ABHA IDs and phone numbers removed.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">Recordings for BPOs and vendors</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Outsourced partners get audio they can work with, without the customer details.</span></div>
+<div class="rv" style="display: flex; flex-direction: column; gap: 6px; padding: 22px 0; border-top: 1px solid var(--kv-line)"><strong style="font-size: 18px">IVR and voice-bot logs</strong><span style="font-size: 16px; line-height: 1.6; color: var(--kv-ink-2)">Debug bot conversations with OTPs and IDs already gone.</span></div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section style="position: relative; overflow: hidden; background: var(--kv-indigo-deep); color: var(--kv-on-dark)">
+<div class="kv-scales" aria-hidden="true"></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 700px">
+<h2 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.04">Try Voice on a week of your own calls.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--kv-on-dark-2)">Free 90-day pilot, installed in your environment. No call ever leaves it.</p>
+</div>
+<a class="kv-btn2" href={u('pilot/')} style="background: var(--kv-khadi); color: var(--kv-indigo-deep); text-decoration: none; padding: 16px 26px; border-radius: 6px; font-weight: 600; font-size: 17px; border: 1px solid var(--kv-khadi)">Book a pilot</a>
+</div>
+</section>
+</Base>
+
+<script>
+import { mount } from '../lib/dc';
+import { Component } from '../logic/voice.js';
+const tpl = import.meta.glob('../templates/voice/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+mount(new Component({}), tpl);
+</script>

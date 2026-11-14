@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import { u } from '../lib/url';
+---
+<Base title="Kavach \u00b7 DPDP and security" description="What the DPDP Rules ask for, the part Kavach covers, and how it runs entirely inside your own infrastructure." current="dpdp/" height={4400}>
+<!-- HERO -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 64px; display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: flex-end">
+<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<p style="margin: 0; font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; color: var(--kv-ink-2)">DPDP Act and Rules, 2025</p>
+<h1 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(42px, 5.4vw, 72px); line-height: 0.98; letter-spacing: -0.02em; text-wrap: balance">What DPDP asks for, and the part Kavach covers.</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.55; color: var(--kv-ink-2); max-width: 640px; text-wrap: pretty">Rule 6 lists masking and tokenisation among the reasonable security safeguards a data fiduciary is expected to have. Failing to maintain those safeguards carries a penalty of up to ₹250 crore.</p>
+</div>
+<div style="flex: 0 1 auto; display: flex; flex-direction: column; gap: 4px; border-left: 2px solid var(--kv-vermilion); padding-left: 22px">
+<span style="font-size: 15px; font-weight: 600; color: var(--kv-ink-2)">Obligations apply from</span>
+<span style="font-family: 'Anek Latin Variable', sans-serif; font-weight: 700; font-stretch: 80%; font-size: 56px; line-height: 1">13 May 2027</span>
+</div>
+</section>
+
+<!-- MAPPING -->
+<section style="border-top: 1px solid var(--kv-ink)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 104px; display: flex; flex-direction: column">
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 8px 48px; padding: 30px 0; border-bottom: 1px solid var(--kv-line)">
+<strong style="font-family: 'Anek Latin Variable', sans-serif; font-stretch: 85%; font-weight: 600; font-size: 24px; line-height: 1.2">Security safeguards: masking, tokenisation, access control</strong>
+<span style="font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">Permanent masking for data you share. Reversible tokens, with the vault on your servers, for data you still need to use. Only roles you approve can unmask.</span>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 8px 48px; padding: 30px 0; border-bottom: 1px solid var(--kv-line)">
+<strong style="font-family: 'Anek Latin Variable', sans-serif; font-stretch: 85%; font-weight: 600; font-size: 24px; line-height: 1.2">Logs kept for at least a year</strong>
+<span style="font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">An audit record for every redaction: what type, where, under which policy and model version. The record never stores the personal data itself, so you can retain it and export it to your SIEM.</span>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 8px 48px; padding: 30px 0; border-bottom: 1px solid var(--kv-line)">
+<strong style="font-family: 'Anek Latin Variable', sans-serif; font-stretch: 85%; font-weight: 600; font-size: 24px; line-height: 1.2">Accountability for processors and vendors</strong>
+<span style="font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">BPOs, TPAs, analytics vendors and LLM providers get redacted copies, so there is less for you to answer for.</span>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 8px 48px; padding: 30px 0; border-bottom: 1px solid var(--kv-line)">
+<strong style="font-family: 'Anek Latin Variable', sans-serif; font-stretch: 85%; font-weight: 600; font-size: 24px; line-height: 1.2">Breach reporting within 72 hours</strong>
+<span style="font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">Redacted archives and logs hold far less personal data, which limits what a breach can expose in the first place.</span>
+</div>
+<div class="rv" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 8px 48px; padding: 30px 0; border-bottom: 1px solid var(--kv-line)">
+<strong style="font-family: 'Anek Latin Variable', sans-serif; font-stretch: 85%; font-weight: 600; font-size: 24px; line-height: 1.2">Requests from data principals</strong>
+<span style="font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">Kavach Core scans files, tables and archives to find where one person’s data lives, so you can answer access and erasure requests.</span>
+</div>
+<p style="margin: 24px 0 0; font-size: 14px; color: var(--kv-muted)">Kavach is a technical safeguard, not legal advice. Confirm your obligations with counsel.</p>
+</div>
+</section>
+
+<!-- DEPLOY -->
+<section style="position: relative; overflow: hidden; background: var(--kv-indigo-deep); color: var(--kv-on-dark)">
+<div class="kv-scales" aria-hidden="true"></div>
+<div aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0.85"><span class="kv-pkt" style="top: 16%; animation-duration: 9s; animation-delay: -0s"></span><span class="kv-pkt" style="top: 30%; animation-duration: 11s; animation-delay: -3.5s"></span><span class="kv-pkt" style="top: 44%; animation-duration: 8s; animation-delay: -1.5s"></span><span class="kv-pkt" style="top: 58%; animation-duration: 12s; animation-delay: -6s"></span><span class="kv-pkt" style="top: 72%; animation-duration: 10s; animation-delay: -2.5s"></span><span class="kv-pkt" style="top: 86%; animation-duration: 9.5s; animation-delay: -5s"></span></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 112px 24px; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h2 class="kv-widen" style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 100%; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.02">Runs on your infrastructure.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--kv-on-dark-2)">Kavach ships as containers that you install and run yourself. We never see your traffic, so there is no new data processor to vet and no cross-border transfer to justify.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 0 24px; font-size: 16px">
+<li style="padding: 12px 0; border-top: 1px solid var(--kv-indigo-line)">Docker, Kubernetes, Helm</li>
+<li style="padding: 12px 0; border-top: 1px solid var(--kv-indigo-line)">Air-gapped installs</li>
+<li style="padding: 12px 0; border-top: 1px solid var(--kv-indigo-line)">CPU and GPU builds</li>
+<li style="padding: 12px 0; border-top: 1px solid var(--kv-indigo-line)">Offline licence keys</li>
+<li style="padding: 12px 0; border-top: 1px solid var(--kv-indigo-line)">No telemetry</li>
+<li style="padding: 12px 0; border-top: 1px solid var(--kv-indigo-line)">Keys in your KMS or HSM</li>
+<li style="padding: 12px 0; border-top: 1px solid var(--kv-indigo-line)">SSO and role-based unmasking</li>
+<li style="padding: 12px 0; border-top: 1px solid var(--kv-indigo-line)">Audit export to your SIEM</li>
+</ul>
+</div>
+<div class="rv" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<pre style="margin: 0; background: var(--kv-indigo-ink); border: 1px solid var(--kv-indigo-line); color: var(--kv-on-dark); border-radius: 8px; padding: 22px; font-family: 'JetBrains Mono Variable', monospace; font-size: 13.5px; line-height: 1.75; overflow-x: auto; white-space: pre">$ helm install kavach kavach/platform \
+    --set voice.enabled=true \
+    --set vision.enabled=true \
+    --set relay.enabled=true
+
+# policy.yaml
+entities:
+  AADHAAR:  &#123; action: mask, keep_last: 4 &#125;
+  PERSON:   &#123; action: tokenise &#125;
+  PHONE:    &#123; action: mask &#125;
+destinations:
+  external_llm: &#123; mode: balanced &#125;
+  vendor_share: &#123; mode: strict &#125;</pre>
+<span style="font-size: 14px; color: var(--kv-on-dark-muted)">One policy file controls Voice, Vision, Relay and Core.</span>
+</div>
+</div>
+</section>
+
+<!-- QUESTIONS -->
+<section style="max-width: 900px; margin: 0 auto; padding: 104px 24px; display: flex; flex-direction: column; gap: 0">
+<h2 class="rv" style="margin: 0 0 24px; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.06">Questions from security reviews</h2>
+<details style="border-top: 1px solid var(--kv-ink); padding: 20px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-size: 19px; font-weight: 600">Does any of our data reach you?<span class="kv-plus" aria-hidden="true" style="color: var(--kv-indigo); font-size: 24px; line-height: 1">+</span></summary><p style="margin: 12px 0 0; font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">No. Everything runs on your infrastructure, including the token vault. Licence keys activate offline, and the software sends no telemetry.</p></details>
+<details style="border-top: 1px solid var(--kv-line); padding: 20px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-size: 19px; font-weight: 600">Does using Kavach make us DPDP compliant?<span class="kv-plus" aria-hidden="true" style="color: var(--kv-indigo); font-size: 24px; line-height: 1">+</span></summary><p style="margin: 12px 0 0; font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">On its own, no. Compliance also covers consent, notices, retention and more. Kavach covers the masking, tokenisation and logging side of security safeguards, and it reduces how much personal data you store and share.</p></details>
+<details style="border-top: 1px solid var(--kv-line); padding: 20px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-size: 19px; font-weight: 600">Who can see the real values?<span class="kv-plus" aria-hidden="true" style="color: var(--kv-indigo); font-size: 24px; line-height: 1">+</span></summary><p style="margin: 12px 0 0; font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">Only roles you approve through your SSO. Everyone else, including vendors and external models, sees tokens or masked values.</p></details>
+<details style="border-top: 1px solid var(--kv-line); border-bottom: 1px solid var(--kv-line); padding: 20px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-size: 19px; font-weight: 600">What happens when it misses something?<span class="kv-plus" aria-hidden="true" style="color: var(--kv-indigo); font-size: 24px; line-height: 1">+</span></summary><p style="margin: 12px 0 0; font-size: 17px; line-height: 1.65; color: var(--kv-ink-2)">You can send low-confidence spans to a human review queue. Strict mode masks a little more than needed in exchange for higher recall. Every decision is written to the audit log.</p></details>
+</section>
+
+<!-- CTA -->
+<section style="border-top: 1px solid var(--kv-line); background: rgba(239, 235, 224, 0.72)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 700px">
+<h2 style="margin: 0; font-family: 'Anek Latin Variable', sans-serif; font-weight: 650; font-stretch: 85%; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.04">Start now and the pilot ends well before May 2027.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: var(--kv-ink-2)">90 days, free, inside your environment.</p>
+</div>
+<a class="kv-btn" href={u('pilot/')} style="background: var(--kv-indigo); color: var(--kv-paper); text-decoration: none; padding: 16px 26px; border-radius: 6px; font-weight: 600; font-size: 17px">Book a pilot</a>
+</div>
+</section>
+</Base>
+
