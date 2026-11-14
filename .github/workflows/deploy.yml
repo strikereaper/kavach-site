@@ -30,7 +30,7 @@ jobs:
       # or your custom domain once one is set in Settings > Pages.
       - id: pages
         if: github.event_name != 'pull_request'
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Build
         run: npm run build
